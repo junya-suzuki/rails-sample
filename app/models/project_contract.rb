@@ -21,4 +21,11 @@
 #
 class ProjectContract < ApplicationRecord
   belongs_to :project
+
+  before_create -> { project_customer_ids("before_create") }
+
+  private
+  def project_customer_ids(callback)
+    logger.debug("*** #{callback}: #{project.contracts.map(&:customer_id)} ***")
+  end
 end

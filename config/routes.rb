@@ -1,4 +1,3 @@
 Rails.application.routes.draw do
-  get 'contracts/index'
-  get 'contracts/create'
+  resources :contracts, only: [:index, :create]
 end

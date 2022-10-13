@@ -8,4 +8,5 @@
 #  updated_at :datetime         not null
 #
 class Customer < ApplicationRecord
+  has_many :projects
 end

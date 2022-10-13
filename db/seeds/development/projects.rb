@@ -1,8 +1,8 @@
 customers = Customer.all
 name = "プロジェクト"
 
-customers.each do |customer|
-  3.times do |i|
-    Project.create!(customer: customer, name: "#{name}-#{i}")
+customers.each_with_index do |customer, i|
+  3.times do |ii|
+    Project.create!(customer: customer, name: "#{name}-#{i}-#{ii}")
   end
 end

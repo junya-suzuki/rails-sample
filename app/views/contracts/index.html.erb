@@ -1,2 +1,31 @@
 <h1>Contracts#index</h1>
-<p>Find me in app/views/contracts/index.html.erb</p>
+
+<div style="margin: 2rem 0;">
+  <%= form_with model: @contract, url: contracts_path do |f| %>
+    <%= f.hidden_field :customer_id, value: @customer.id %>
+    <div>Name: <%= f.text_field :name %></div>
+    <div>Project: <%= f.collection_select :project_id, @customer.projects, :id, :name %></div>
+    <div><%= f.submit %></div>
+  <% end %>
+</div>
+
+<table border="1" style="border-collapse: collapse">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Project</th>
+      <th>Customer</th>
+    </tr>
+  <thead>
+  <tbody>
+    <% @contracts.each do |contract| %>
+      <tr>
+        <td><%= contract.id %></td>
+        <td><%= contract.name %></td>
+        <td><%= contract.project.name %></td>
+        <td><%= contract.project.customer.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
