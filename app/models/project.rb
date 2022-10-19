@@ -18,5 +18,5 @@
 #
 class Project < ApplicationRecord
   belongs_to :customer
-  has_many :contracts, class_name: "ProjectContract", foreign_key: "project_id"
+  has_many :contracts, class_name: "ProjectContract", foreign_key: "project_id", inverse_of: :project
 end

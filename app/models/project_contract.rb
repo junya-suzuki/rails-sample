@@ -20,7 +20,7 @@
 #  fk_rails_...  (project_id => projects.id)
 #
 class ProjectContract < ApplicationRecord
-  belongs_to :project
+  belongs_to :project, inverse_of: :contracts
 
   before_create -> { project_customer_ids("before_create") }
 
